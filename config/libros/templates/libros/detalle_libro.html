@@ -1,0 +1,57 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        {% if libro.portada_url %}
+            <img src="{{ libro.portada_url }}" class="card-img-top img-fluid rounded-top" alt="Portada de {{ libro.titulo }}">
+        {% endif %}
+        <div class="card-body">
+            <h2 class="card-title text-primary">{{ libro.titulo }}</h2>
+            <h5 class="card-subtitle mb-2 text-muted">Autor: {{ libro.autor }}</h5>
+            <p class="mb-1"><strong>Género:</strong> {{ libro.genero }}</p>
+            <p class="mb-1"><strong>Fecha de publicación:</strong> {{ libro.fecha_publicacion }}</p>
+            <p class="mb-3"><strong>Sinopsis:</strong> {{ libro.sinopsis }}</p>
+
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{% url 'registrar_prestamo_libro' libro.id %}" class="btn btn-success">
+                    📚 Solicitar Préstamo
+                </a>
+                <a href="javascript:history.back()" class="btn btn-secondary">
+                    🔙 Volver
+                </a>
+            </div>
+            {% if error %}
+                <div class="alert alert-danger mt-3">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h4 class="text-dark">⭐ <span class="text-warning">{{ promedio|floatformat:1 }}/5</span></h4>
+
+        {% for reseña in reseñas %}
+            <div class="card mt-3 shadow-sm border-0">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <strong>{{ reseña.usuario.username }}</strong>
+                        <span class="text-warning">⭐ {{ reseña.calificacion }}/5</span>
+                    </div>
+                    <p class="mt-2 mb-1">{{ reseña.comentario }}</p>
+                    <small class="text-muted">{{ reseña.fecha|date:"d M Y H:i" }}</small>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-muted mt-3">No hay reseñas aún.</p>
+        {% endfor %}
+
+        <div class="mt-4 text-center">
+            <a href="{% url 'agregar_reseña' libro.id %}" class="btn btn-outline-primary">
+                ✍️ Escribir una reseña
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

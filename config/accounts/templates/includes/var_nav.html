@@ -1,0 +1,57 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <i class="fas fa-book me-2"></i>
+            Biblioteca
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="fas fa-home me-1"></i>Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'catalago' %}">
+                        <i class="fas fa-book me-1"></i>Catalogo
+                    </a>
+                </li>
+               
+                
+                
+                {% if user.groups.all.0.name == "solicitantes" %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lista_prestamos' %}">
+                        <i class="fas fas fa-edit me-1"></i>Libros prestados
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lista_libros' %}">Administrar</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">
+                        <i class="fas fa-user-plus me-1"></i>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <i class="fas fa-user me-1"></i>Logout
+                    </a>
+                </li> -->
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'recomendaciones' %}">
+                        <i class="fas fas fa-edit me-1"></i>Recomendaciones
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Biblioteca</title>
+
+    <!-- Bootstrap & FontAwesome -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
+    
+</head>
+<body>
+
+    {% if request.user.is_authenticated %}
+
+    <!-- En la plantilla -->
+        {% include "includes/var_nav.html"%}
+            <!-- Main Content -->
+            <main class="main-container">
+                <div class="container">
+                    {% if mensaje %}
+                        <div class="alert alert-info d-flex align-items-center mb-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <div>{{ mensaje }}</div>
+                        </div>
+                    {% endif %}
+
+                    <div class="card">
+                        <div class="card-body p-4">
+                            {% block content %}
+                                {% include "includes/tabla_libros.html" with libros=libros %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h5>SecureMFA</h5>
+                            <p class="text-muted">Protegiendo tus cuentas con autenticación de múltiples factores.</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <p class="text-muted mb-0">&copy; {% now "Y" %} SecureMFA. Todos los derechos reservados.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+                   {% else %}
+        {{request.User.is_authenticated}}
+        {{request.User}}
+        {% include "includes/login.html" %}
+    {% endif %}
+
+
+
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

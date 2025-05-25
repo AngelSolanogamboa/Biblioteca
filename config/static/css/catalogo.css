@@ -1,0 +1,94 @@
+:root {
+    --bs-body-bg: #0f172a;
+    --bs-body-color: #e2e8f0;
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #1e40af;
+    --accent: #818cf8;
+    --bs-border-color: #334155;
+    --bs-card-bg: #1e293b;
+    --bs-navbar-bg: #1e293b;
+}
+
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+}
+
+.navbar {
+    background-color: var(--bs-navbar-bg);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-brand {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    color: var(--accent) !important;
+}
+
+.nav-link {
+    color: #cbd5e1;
+    margin-left: 1rem;
+}
+/* ---------------------------------------------------------------------------- */
+/* Fondo general */
+/* body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+/* Estilo de las tarjetas */
+.libro-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.libro-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen de portada */
+.portada-libro {
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Títulos y textos */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.card-subtitle {
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.card-body p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+#repiza{
+    background-color: #030c35;
+    width: 350px;;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
